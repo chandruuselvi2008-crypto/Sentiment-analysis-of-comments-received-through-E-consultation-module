@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>E-Consultation Feedback Form</title>
+  <style>
+    /* CSS starts here */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: #f0f4f8;
+      padding: 2rem;
+      color: #1e293b;
+    }
+
+    .container {
+      max-width: 600px;
+      margin: 0 auto;
+      background: white;
+      padding: 2rem;
+      border-radius: 12px;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    }
+
+    h1 {
+      margin-bottom: 1.5rem;
+      color: #0f172a;
+      font-size: 1.8rem;
+    }
+
+    label {
+      display: block;
+      margin-top: 1rem;
+      margin-bottom: 0.5rem;
+      font-weight: 600;
+    }
+
+    input, textarea, select {
+      width: 100%;
+      padding: 0.75rem;
+      border: 2px solid #cbd5e1;
+      border-radius: 6px;
+      font-size: 1rem;
+      transition: border 0.2s;
+    }
+
+    input:focus, textarea:focus, select:focus {
+      outline: none;
+      border-color: #3b82f6;
+    }
+
+    button {
+      margin-top: 1.5rem;
+      width: 100%;
+      padding: 0.9rem;
+      background: #3b82f6;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      font-size: 1rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+
+    button:hover {
+      background: #2563eb;
+    }
+
+    #output {
+      margin-top: 1.5rem;
+      padding: 1rem;
+      background: #dbeafe;
+      border-left: 4px solid #3b82f6;
+      border-radius: 6px;
+      display: none;
+    }
+
+    .counter {
+      text-align: right;
+      font-size: 0.85rem;
+      color: #64748b;
+      margin-top: 0.25rem;
+    }
+  </style>
+</head>
+<body>
+  <!-- HTML starts here -->
+  <div class="container">
+    <h1>E-Consultation Feedback</h1>
+    
+    <form id="feedbackForm">
+      <label for="name">Name</label>
+      <input type="text" id="name" placeholder="Enter your name" required>
+      
+      <label for="stakeholder">Stakeholder Type</label>
+      <select id="stakeholder" required>
+        <option value="">Select type</option>
+        <option value="Citizen">Citizen</option>
+        <option value="NGO">NGO</option>
+        <option value="Industry">Industry</option>
+        <option value="Academia">Academia</option>
+      </select>
+      
+      <label for="comment">Your Comment</label>
+      <textarea id="comment" rows="5" placeholder="Share your views on the draft policy..." maxlength="500" required></textarea>
+      <div class="counter"><span id="charCount">0</span>/500</div>
+      
+      <button type="submit">Submit Feedback</button>
+    </form>
+    
+    <div id="output"></div>
+  </div>
+
+  <script>
+    // JavaScript starts here
+    const form = document.getElementById('feedbackForm');
+    const comment = document.getElementById('comment');
+    const charCount = document.getElementById('charCount');
+    const output = document.getElementById('output');
+
+    // Live character counter
+    comment.addEventListener('input', () => {
+      charCount.textContent = comment.value.length;
+      
+      if (comment.value.length > 450) {
+        charCount.style.color = '#dc2626';
+      } else {
+        charCount.style.color = '#64748b';
+      }
+    });
+
+    // Form submission
+    form.addEventListener('submit', (e) => {
+      e.preventDefault();
+      
+      const name = document.getElementById('name').value;
+      const stakeholder = document.getElementById('stakeholder').value;
+      const commentText = comment.value;
+      
+      // Simple client-side validation
+      if (commentText.length < 10) {
+        alert('Please enter at least 10 characters for your comment.');
+        return;
+      }
+      
+      // Show confirmation - in real app you'd POST to your E-consultation backend
+      output.style.display = 'block';
+      output.innerHTML = `
+        <strong>Thank you, ${name}!</strong><br>
+        Your feedback as <em>${stakeholder}</em> has been recorded.<br>
+        <br>
+        <strong>Comment:</strong> ${commentText}
+      `;
+      
+      // Reset form
+      form.reset();
+      charCount.textContent = '0';
+      
+      // Scroll to output
+      output.scrollIntoView({ behavior: 'smooth' });
+    });
+  </script>
+</body>
+</html>
