@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sentiment Analysis | E-Consultation</title>
+
+<link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<header>
+
+<h1 class="creator">
+PROJECT CREATED BY <br>
+<span>CHANDRA PRAKASH G</span>
+</h1>
+
+<nav>
+
+<div class="logo">
+💬 Sentiment Analyzer
+</div>
+
+<ul>
+
+<li><a href="#home">Home</a></li>
+
+<li><a href="#about">About</a></li>
+
+<li><a href="#features">Features</a></li>
+
+<li><a href="#analyzer">Analyzer</a></li>
+
+</ul>
+
+</nav>
+
+</header>
+
+<section class="hero" id="home">
+
+<div class="overlay">
+
+<h2>
+Sentiment Analysis of Comments Received Through E-Consultation Module
+</h2>
+
+<p>
+
+Analyze citizen feedback instantly and identify whether comments are Positive, Neutral or Negative.
+
+</p>
+
+<a href="#analyzer" class="btn">
+Start Analysis
+</a>
+
+</div>
+
+</section>
+
+<section id="about" class="section">
+
+<h2>About the Project</h2>
+
+<p>
+
+This project demonstrates a web-based sentiment analysis system for comments submitted through an E-Consultation platform. It classifies comments into Positive, Neutral and Negative sentiments, helping organizations understand public opinion quickly.
+
+</p>
+
+<img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=1400&q=80">
+
+</section>
+
+<section id="features" class="section">
+
+<h2>Features</h2>
+
+<div class="cards">
+
+<div class="card">
+
+<h3>😊 Positive Detection</h3>
+
+<p>Detect supportive and encouraging comments.</p>
+
+</div>
+
+<div class="card">
+
+<h3>😐 Neutral Detection</h3>
+
+<p>Recognize informational and neutral feedback.</p>
+
+</div>
+
+<div class="card">
+
+<h3>😠 Negative Detection</h3>
+
+<p>Identify complaints and dissatisfaction.</p>
+
+</div>
+
+<div class="card">
+
+<h3>📊 Dashboard Ready</h3>
+
+<p>Can later connect with machine learning APIs.</p>
+
+</div>
+
+</div>
+
+</section>
+
+<section id="analyzer" class="section">
+
+<h2>Comment Sentiment Analyzer</h2>
+
+<textarea id="comment" placeholder="Type your comment here..."></textarea>
+
+<button onclick="analyzeSentiment()">
+Analyze
+</button>
+
+<div id="result">
+
+Waiting for analysis...
+
+</div>
+
+</section>
+
+<section class="stats">
+
+<div class="stat">
+
+<h3 id="positiveCount">0</h3>
+
+<p>Positive</p>
+
+</div>
+
+<div class="stat">
+
+<h3 id="neutralCount">0</h3>
+
+<p>Neutral</p>
+
+</div>
+
+<div class="stat">
+
+<h3 id="negativeCount">0</h3>
+
+<p>Negative</p>
+
+</div>
+
+</section>
+
+<footer>
+
+<p>
+
+© 2026 Sentiment Analysis Project
+
+</p>
+
+<p>
+
+Developed by <b>CHANDRA PRAKASH G</b>
+
+</p>
+
+</footer>
+
+<script src="script.js"></script>
+
+</body>
+</html>
